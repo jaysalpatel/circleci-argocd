@@ -27,7 +27,7 @@ jobs:
       - run:
           name: build image
           command: |
-            docker build -t $DOCKERHUB_USERNAME/resume-router-k8s .
+            docker build -t $DOCKERHUB_USERNAME/circleci-argocd:$CIRCLE_SHA1 .
  
   push:
     machine:
@@ -39,9 +39,9 @@ jobs:
       - run:
           name: Push image
           command: |
-            docker build -t $DOCKERHUB_USERNAME/resume-router-k8s .
+            docker build -t $DOCKERHUB_USERNAME/circleci-argocd:$CIRCLE_SHA1 .
             echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
-            docker push $DOCKERHUB_USERNAME/resume-router-k8s 	
+            docker push $DOCKERHUB_USERNAME/circleci-argocd:$CIRCLE_SHA1	
 
 workflows:
   version: 2
