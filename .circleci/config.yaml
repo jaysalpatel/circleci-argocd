@@ -12,7 +12,7 @@ jobs:
           name: install dependencies
           command: |
             sudo yum update -y 
-            npm install --save react-router react-mdl
+            npm install --save react-router-dom react-mdl 
             npm start
 
   build:
