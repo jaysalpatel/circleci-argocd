@@ -8,7 +8,7 @@ class Education extends React.Component {
                     <CardTitle style={{color: '#fff', height: '180px', background: '/Users/jaysalpatel/Downloads/argocd_architecture.png'}}>Welcome</CardTitle>
                     <CardText>
                         <p>PC Deskside Technician- IRS</p>
-                        <p1>IRS-ABBTECH</p1>
+                        <p1>IRS- ABBTECH</p1>
                     </CardText>
                     
                 </Card>
