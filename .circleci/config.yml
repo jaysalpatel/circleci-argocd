@@ -37,9 +37,9 @@ jobs:
       - run:
           name: Push image
           command: |
-            docker build -t $DOCKERHUB_USERNAME/circleci-argocd$CIRCLE_SHA1
+            docker build -t $DOCKERHUB_USERNAME/circleci-argocd$CIRCLE_SHA1 .
             echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
-            docker push $DOCKERHUB_USERNAME/circleci-argocd$CIRCLE_SHA1
+            docker push $DOCKERHUB_USERNAME/circleci-argocd$CIRCLE_SHA1 
 
 workflows:
   version: 2
