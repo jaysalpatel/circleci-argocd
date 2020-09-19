@@ -1,14 +1,6 @@
-FROM zenika/alpine-node
-
-MAINTAINER Jaysal Patel
-
-WORKDIR /ciconfig
-COPY package.json /ciconfig
-
-COPY . . 
-
-RUN npm install --save react-mdl react-router-dom 
-
-RUN npm start
-
+FROM alpine:node
+WORKDIR /app
+COPY package*.json /app/
+RUN npm install --save react-router-dom react-mdl react
+COPY ./ /app/
 CMD [ "sleep", "5"]
