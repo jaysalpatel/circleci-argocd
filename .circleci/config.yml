@@ -3,7 +3,7 @@ jobs:
   test:
     machine:
       image: circleci/node@3.0.0
-      docker_layer_caching: true
+      docker_layer_caching: false
     working_directory: ~/circleci-argocd
           
     steps:
@@ -13,12 +13,13 @@ jobs:
           command: |
             sudo yum update -y 
             npm install --save react-router-dom react-mdl 
-            npm start
+            
 
   build:
   
     machine:
       image: circleci/node@3.0.0
+      docker_layer_caching: false
     working_directory: ~/circleci-argocd 
           
     steps:
@@ -26,20 +27,21 @@ jobs:
       - run:
           name: build image
           command: |
-            docker build -t $DOCKERHUB_USERNAME/circleci-argocd:$CIRCLE_SHA1 .
+            docker build -t $DOCKERHUB_USERNAME/circleci-argocd .
  
   push:
     machine:
       image: circleci/node@3.0.0 
+      docker_layer_caching: false
     working_directory: ~/circleci-argocd
     steps:
       - checkout 
       - run:
           name: Push image
           command: |
-            docker build -t $DOCKERHUB_USERNAME/circleci-argocd$CIRCLE_SHA1 .
+            docker build -t $DOCKERHUB_USERNAME/circleci-argocd .
             echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
-            docker push $DOCKERHUB_USERNAME/circleci-argocd$CIRCLE_SHA1 
+            docker push $DOCKERHUB_USERNAME/circleci-argocd
 
 workflows:
   version: 2
