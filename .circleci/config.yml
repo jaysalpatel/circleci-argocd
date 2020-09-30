@@ -13,7 +13,7 @@ jobs:
           command: |
             sudo yum update -y 
             npm install react-router-dom react-mdl 
-            npm start
+          
 
   build:
   
