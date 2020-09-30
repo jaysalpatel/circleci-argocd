@@ -5,5 +5,5 @@ node_js:
 services: 
     - docker
 before_install: 
-    - docker build -t wilpat/sample-app -f Dockerfile.dev .script:     
+    - docker build -t circleci/argocd -f Dockerfile.dev .script:     
     - docker run -e CI=true jaysalpatel/circleci-argocd npm run test -- --coverage
