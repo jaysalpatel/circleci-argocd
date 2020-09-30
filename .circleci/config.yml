@@ -2,7 +2,7 @@ version: 2
 jobs:
   test:
     machine:
-      image: circleci/classic:201808-01
+      image: circleci/node@3.0.0
       docker_layer_caching: false
     working_directory: ~/circleci-argocd
           
@@ -18,7 +18,7 @@ jobs:
   build:
   
     machine:
-      image: circleci/classic:201808-01
+      image: circleci/node
       docker_layer_caching: false
     working_directory: ~/circleci-argocd 
           
@@ -27,21 +27,21 @@ jobs:
       - run:
           name: build image
           command: |
-            docker build -t jaysalpatel/circleci-argocd .
+            docker build -t $DOCKERHUB_USERNAME/circleci-argocd .
  
   push:
     machine:
-      image: circleci/node@3.0.0 
-      docker_layer_caching: false
+      image: circleci/node
+      
     working_directory: ~/circleci-argocd
     steps:
       - checkout 
       - run:
           name: Push image
           command: |
-            docker build -t jaysalpatel/circleci-argocd .
-            echo $DOCKERHUB_PASSWORD | docker login --username jaysalpatel --password-stdin
-            docker push jaysalpatel/circleci-argocd
+            docker build -t $DOCKERHUB_USERNAME/circleci-argocd .
+            echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
+            docker push $DOCKERHUB_USERNAME/circleci-argocd
 
 workflows:
   version: 2
