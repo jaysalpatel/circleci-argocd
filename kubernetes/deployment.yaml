@@ -41,7 +41,7 @@ spec:
       volumes:
       - name: secret-volume
         secret:
-          secretName: mysecret
+          secretName: sample-secret
       - name: config-volume
         configMap:
           name: example-config #name of our configmap object

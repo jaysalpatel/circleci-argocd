@@ -12,15 +12,15 @@ jobs:
           name: install dependencies
           command: |
             sudo yum update -y 
-            npm install --save react-router-dom react-mdl 
+            npm install react-router-dom react-mdl 
             npm start
 
   build:
   
     machine:
-      image: circleci/node
+      image: circleci/node:2.0
       docker_layer_caching: false
-    working_directory: ~/circleci-argocd 
+    working_directory: ~/circleci-argocd
           
     steps:
       - checkout 
@@ -31,7 +31,7 @@ jobs:
  
   push:
     machine:
-      image: circleci/node
+      image: circleci/node:2.0
       
     working_directory: ~/circleci-argocd
     steps:
