@@ -10,12 +10,12 @@ import './jaysalpatel.jpg'
               
   
               <div className="banner-text">
-                <h1>Jaysal Patel</h1>
+                <p2> I am a passionate individual about Devops and programming</p2>
                 <br></br>
                 
   
               <hr/>
-              
+
   
             
   

@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, CardTitle, CardText, CardActions, Button, IconButton, CardMenu } from 'react-mdl'
 import { Link } from 'react-router-dom'
 import './circleci-argocd.png'
-import './argocd.png'
+import './argocd1.png'
 import './App.css'
 class Projects extends React.Component {
     render() {
@@ -19,12 +19,11 @@ class Projects extends React.Component {
                     </CardText>                
                 </Card>
                <br></br>
-               <Card shadow={8} style={{width: '80000px',  margin: 'auto', border: 'blue'}}>
+               <Card shadow={8} style={{width: '8000px',  margin: 'auto', border: 'blue'}}>
                     <CardTitle style={{color: '#fff',  background: '/Users/jaysalpatel/Downloads/argocd_architecture.png'}}>Welcome</CardTitle>
                     <CardText>
-                        <a href="https://github.com/jaysalpatel/circleci-argocd"> Pipeline</a>
-                        <p>GitOps Pipeline with CircleCI and ArgoCD</p>
-                        <img className="circleci-argocd" src={require('./argocd.png')} />
+                        
+                        <img className="circleci-argocd" src={require('./argocd1.png')} />
                         
                     </CardText>                
                 </Card>
