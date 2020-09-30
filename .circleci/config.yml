@@ -1,20 +1,6 @@
 version: 2
 jobs:
-  test:
-    machine:
-      image: node:alpine
-      docker_layer_caching: false
-    working_directory: ~/repo
-          
-    steps:
-      - checkout
-      - run:
-          name: install dependencies
-          command: |
-            sudo yum update -y 
-            npm install react-router-dom react-mdl 
-          
-
+  
   build:
   
     machine:
