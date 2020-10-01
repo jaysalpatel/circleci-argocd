@@ -36,5 +36,17 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaysalpatel/circleci-argocd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaysalpatel/circleci-argocd/issues"
+  },
+  "homepage": "https://github.com/jaysalpatel/circleci-argocd#readme"
 }
