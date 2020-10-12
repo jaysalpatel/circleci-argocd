@@ -22,10 +22,8 @@ spec:
     spec:
       containers:
       - name: react-app
-        image: jaysalpatel/circleci-argocd
+        image: bitnami/wordpress
         imagePullPolicy: Always
-        ports:
-        - containerPort: 5000
         resources:
           requests:
             memory: "64Mi"
