@@ -31,15 +31,15 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "500m"
-        volumeMounts:
-        - name: secret-volume
-          mountPath: /secrets/
-        - name: config-volume
-          mountPath: /configs/
-      volumes:
-      - name: secret-volume
-        secret:
-          secretName: sample-secret
-      - name: config-volume
-        configMap:
-          name: example-config #name of our configmap object
+        ##volumeMounts:
+        #3- name: secret-volume
+          ##mountPath: /secrets/
+        ##- name: config-volume
+          ##mountPath: /configs/
+      ##volumes:
+      #- name: secret-volume
+       # secret:
+        #  secretName: sample-secret
+      #- name: config-volume
+       # configMap:
+        #  name: example-config #name of our configmap object
