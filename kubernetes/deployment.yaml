@@ -24,9 +24,8 @@ spec:
       - name: wordpress
         image: bitnami/wordpress
         imagePullPolicy: Always
-        type: nodePort
-        port:
-          - port: 
+        ports:
+        - containerPort: 80
         resources:
           requests:
             memory: "64Mi"
