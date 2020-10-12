@@ -21,9 +21,12 @@ spec:
         app: react-app
     spec:
       containers:
-      - name: react-app
+      - name: wordpress
         image: bitnami/wordpress
         imagePullPolicy: Always
+        type: nodePort
+        port:
+          - port: 
         resources:
           requests:
             memory: "64Mi"
