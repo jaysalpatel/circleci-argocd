@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/jaysalpatel/resume-router-k8s-jenkins.git
+    repoURL: https://github.com/jaysalpatel/circleci-argocd.git
     targetRevision: HEAD
     path: kubernetes/
     directory:
