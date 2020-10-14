@@ -1,27 +1,13 @@
 version: 2
-  jobs:
-    test:
-      docker: 
-        - image: circleci/node
-      steps:
-        - checkout 
-        - run: echo "running tests with npm"
-        - run: npm install
-        - run: npm test
-    build:
-      docker: 
-        - image: circleci/node
-      steps:
-        - checkout
-        - run: echo "running builds"
-        - run: npm install
-        - run: npm run build
+jobs:
+  build:
+    docker:
+      - image: circleci/node
+    
+    working_directory: ~/repo
 
-workflows:
-  version: 2
-    test_build:
-      jobs:
-        - test
-        - build
-          requires:  
-            - test
+    steps:
+      - checkout:
+
+      - run: npm install
+      - run: npm test
