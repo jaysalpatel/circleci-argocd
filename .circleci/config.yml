@@ -1,5 +1,9 @@
 version: 2.1
 jobs:
+  build:
+    working_directory: /app
+    docker:
+      - image: alpine-node
   test:
     machine:
       image: circleci/node@4.0.1
@@ -7,20 +11,15 @@ jobs:
     working_directory: ~/repo
           
     steps:
+    
+  deps:
+    push:
       - checkout
       - run:
           name: install dependencies
-          command: |
+          command: 
             sudo yum update -y 
             npm install react-router-dom react-mdl 
-          
-
-  build:
-  
-    machine:
-      image: circleci/node@4.0.1
-      docker_layer_caching: false
-    working_directory: ~/repo
           
     steps:
       - checkout 
@@ -39,7 +38,7 @@ jobs:
       - run:
           name: Push image
           command: |
-            docker build -t $DOCKERHUB_USERNAME/circleci-argocd .
+            docker build -t $DOCKERHUB_USERNAME/bitnami/suitecrm .
             echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
             docker push $DOCKERHUB_USERNAME/circleci-argocd
 
@@ -62,7 +61,7 @@ workflows:
       - push:
           context: DOCKERHUB
           requires:
-            - build
+            - push
           filters:
             branches:
               only: master
