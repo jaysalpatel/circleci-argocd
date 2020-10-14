@@ -10,8 +10,7 @@ jobs:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
       - run: npm run test
-orbs:
-  node: circleci/node@4.1
+
 version: 2.1
 workflows:
   test_my_app:
