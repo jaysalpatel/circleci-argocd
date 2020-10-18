@@ -7,9 +7,13 @@ jobs:
       - checkout # check out the code in the project directory
       - run: npm install 
       - run: npm start
-      - run: docker build -t circleci-argocd:latest . 
-      - run: docker tag circleci-argocd:latest jaysalpatel/circle-argocd:latest
-      - run: docker push jaysalpatel/circleci-argocd:latest
-  
+      - run: |
+         echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+         docker run -d --name db company/proprietary-db:1.2.3
 
+     # build the application image
+     - run: docker build -t jaysalpatel/circleci-argocd .
+
+     # deploy the image
+     - run: docker push jaysalpatel/circleci-argocd
     
