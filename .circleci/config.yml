@@ -7,14 +7,9 @@ jobs:
       - checkout # check out the code in the project directory
       - run: npm install 
       - run: npm start
-  
-  test:
-    docker: 
-        - image: alpine-node
-    steps: 
-      - checkout
       - run: docker build -t circleci-argocd:latest . 
       - run: docker tag circleci-argocd:latest jaysalpatel/circle-argocd:latest
       - run: docker push jaysalpatel/circleci-argocd:latest
+  
 
     
