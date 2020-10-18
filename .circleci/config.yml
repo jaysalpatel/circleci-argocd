@@ -1,19 +1,37 @@
 version: 2
 jobs:
   build:
+    environment:
+      IMAGE_NAME: circleci/node:10.0
     docker: #  circleci/node:10.0.0 # the primary container, where your job's commands are run
         - image: circleci/node:10.0.0  # run in the background
     steps:
       - checkout # check out the code in the project directory
       - run: npm install 
-      - run: npm start
-      - run: |
-         echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
-         docker run -d --name db company/proprietary-db:1.2.3
+      
+      - run: npm run dev
+      - run: npm run build
+  
+  push:
+    docker: 
+        - image: alpine-node
+    steps: 
+      - checkout
+      - run: docker build -t circleci-argocd . 
+      - run: docker push -t jaysalpatel/circleci-argocd
+workflows:
+  version: 2
+  build-master:
+    jobs:
+      - build:
+        filter:
+          branches:
+            only: master
+  push:
+    jobs:
+      - push:
+        filter:
+          branches:
+            only: master
 
-     # build the application image
-     - run: docker build -t jaysalpatel/circleci-argocd .
-
-     # deploy the image
-     - run: docker push jaysalpatel/circleci-argocd
     
